@@ -39,7 +39,7 @@ function addTransactionsToScreen(transactions) {
 
         li.appendChild(createParagraph(formatDate(transaction.date)));
         li.appendChild(createParagraph(formatMoney(transaction.money)));
-        li.appendChild(createParagraph(transaction.type));
+        li.appendChild(createParagraph(formatType(transaction)));
         if (transaction.description) {
             li.appendChild(createParagraph(transaction.description));
         }
@@ -67,6 +67,11 @@ function createDeleteButton(transaction) {
         askRemoveTransaction(transaction);
     })
     return deleteButton;
+}
+
+function formatType(transaction) {
+    const label = transaction.type === 'income' ? 'Receita' : 'Despesa';
+    return transaction.transactionType ? `${label} · ${transaction.transactionType}` : label;
 }
 
 function createParagraph(value) {

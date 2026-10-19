@@ -1,14 +1,55 @@
+/* Cores do tema: para mudar o azul do site, altere só aqui */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg: #eff6ff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: #cbd5e1;
+    --danger: #dc2626;
+    --success: #16a34a;
+}
+
 body {
     margin: 0;
-    background: rgb(45, 211, 111);
+    background: var(--bg);
+    color: var(--text);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
+/* Telas de login e registro: fundo azul com o formulário em um cartão branco */
+body.centralize {
+    background: var(--primary);
+}
+body.centralize form::before {
+    content: "Controle de gastos";
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+/* Barra azul no topo (home e transação) */
 header {
-    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary);
+    padding: 8px 16px;
+}
+header::before {
+    content: "Controle de gastos";
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
 }
 header button {
     width: auto;
+}
+header .clear {
+    color: white;
 }
 
 .centralize {
@@ -17,29 +58,51 @@ header button {
     align-items: center;
 }
 
-.form-field {
-    margin-bottom: 10px;
+/* Formulários em cartão branco */
+form {
+    width: 100%;
+    max-width: 360px;
+    background: white;
+    padding: 24px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
-input,
-button,
-select {
-   padding: 10px;
-   width: 100%;
-   box-sizing: border-box;
-   border-radius: 4px;
-   font-family: inherit;
-   font-size: 16px;
-}
-input:focus,
-select:focus {
-    outline: 2px solid white;
+.form-field {
+    margin-bottom: 14px;
 }
 .form-field > div:first-child label {
     font-weight: 600;
 }
 input[type="radio"] {
     width: auto;
+    margin-right: 4px;
+    accent-color: var(--primary);
+}
+input[type="radio"] + label {
+    margin-right: 16px;
+}
+
+input,
+button,
+select {
+    padding: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 16px;
+}
+input,
+select {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: white;
+}
+input:focus,
+select:focus {
+    outline: 2px solid var(--primary);
+    border-color: transparent;
 }
 
 .loading {
@@ -54,8 +117,13 @@ input[type="radio"] {
     color: white;
 }
 
+/* Botões arredondados */
 button {
     cursor: pointer;
+    border-radius: 999px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    transition: background 0.15s, opacity 0.15s;
 }
 button:active {
     opacity: 0.8;
@@ -66,12 +134,17 @@ button[disabled] {
 }
 
 button.fab {
-    width: 54px;
+    width: auto;
     height: 54px;
-    border-radius: 50px;
+    padding: 0 22px;
     border: none;
-    font-size: 24px;
-    box-shadow: 2px 2px 2px gray;
+    background: var(--primary);
+    color: white;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.45);
+}
+button.fab:hover {
+    background: var(--primary-dark);
 }
 button.fab.fixed {
     position: fixed;
@@ -86,29 +159,41 @@ button.fab.right {
 .clear {
     background: transparent;
     border: none;
-    color: white;
+    color: var(--primary);
+}
+.clear:hover:not([disabled]) {
+    text-decoration: underline;
 }
 .solid {
-    background: white;
+    background: var(--primary);
     border: none;
-    color: rgb(45, 211, 111);
+    color: white;
+}
+.solid:hover:not([disabled]) {
+    background: var(--primary-dark);
 }
 .outline {
     background: transparent;
-    color: white;
-    border: 1px solid white;
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+}
+.outline:hover:not([disabled]) {
+    background: var(--bg);
 }
 .outline.danger {
-    color: red;
-    border-color: red;
+    color: var(--danger);
+    border-color: var(--danger);
+}
+.outline.danger:hover {
+    background: #fee2e2;
 }
 
 .error {
-    background: red;
-    color: white;
+    background: #fee2e2;
+    color: #b91c1c;
     display: none;
-    padding: 4px 8px;
-    margin-top: 4px;
-    border-radius: 4px;
+    padding: 6px 10px;
+    margin-top: 6px;
+    border-radius: 8px;
     font-size: 14px;
-} 
+}

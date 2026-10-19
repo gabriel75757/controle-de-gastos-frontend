@@ -1,3 +1,5 @@
+// Configuração do app Web "Controle de gastos" (projeto controle-de-gastos-1d25b).
+// Este projeto usa o SDK via CDN (versão compat), então só o objeto firebaseConfig é necessário.
 const firebaseConfig = {
     apiKey: "AIzaSyBRmFdqf_9mj9jge-e-t5ovChDdCDAVAKQ",
     authDomain: "controle-de-gastos-1d25b.firebaseapp.com",
