@@ -1,16 +1,27 @@
 body {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 ol {
     list-style-type: none;
     padding: 0;
+    max-width: 600px;
+    margin: 16px auto 96px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+ol:empty::before {
+    content: "Nenhuma transação ainda. Toque no + para adicionar.";
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 32px 16px;
 }
 ol li {
     cursor: pointer;
     background: white;
     padding: 8px 16px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lightgray;
 }
 ol li:hover {
     opacity: 0.8;
@@ -21,14 +32,29 @@ ol li.expense {
 ol li.income {
     border-left: 10px solid green;
 }
-ol li:hover button.danger {
-    display: block;
+
+/* data menor, valor em destaque e colorido por tipo */
+ol li p:nth-of-type(1) {
+    font-size: 13px;
+    color: gray;
+}
+ol li p:nth-of-type(2) {
+    font-size: 18px;
+    font-weight: bold;
+}
+ol li.expense p:nth-of-type(2) {
+    color: #c62828;
+}
+ol li.income p:nth-of-type(2) {
+    color: #2e7d32;
 }
 
+/* botão Remover sempre visível (no celular não existe hover) */
 button.danger {
     width: auto;
     float: right;
-    display: none;
+    padding: 6px 10px;
+    font-size: 14px;
 }
 
 p {
